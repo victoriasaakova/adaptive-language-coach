@@ -8,7 +8,7 @@ SOURCES = [
     'SKILL.md', 'references/lesson-protocol.md', 'references/absolute-beginner.md', 'references/assessment.md',
     'references/records.md', 'references/lesson-handoff.md', 'references/configuration.md',
     'references/limitations.md', 'references/notion-sync.md',
-    'templates/lesson.md', 'templates/state.md', 'config/schema.json',
+    'templates/lesson.md', 'templates/learning-plan.md', 'templates/state.md', 'config/schema.json',
 ]
 
 def render():

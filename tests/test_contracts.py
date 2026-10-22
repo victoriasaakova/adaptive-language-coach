@@ -41,6 +41,16 @@ class ConfigTests(unittest.TestCase):
         self.c["target_language"] = self.c["native_language"]
         with self.assertRaises(ValueError): validate_config(self.c)
 
+    def test_optional_learning_horizon(self):
+        for value in [None, 1, 8, 104]:
+            c = copy.deepcopy(self.c)
+            c["learning_horizon_weeks"] = value
+            validate_config(c)
+        for value in [0, 105, 8.5, "eight"]:
+            c = copy.deepcopy(self.c)
+            c["learning_horizon_weeks"] = value
+            with self.assertRaises(ValueError): validate_config(c)
+
 class SRSTests(unittest.TestCase):
     def setUp(self):
         self.e = dict(introduced_on="2024-02-28", passed_offsets=[], retry_on=None, reviews=[], status="learning")

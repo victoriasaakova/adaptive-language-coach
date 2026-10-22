@@ -5,7 +5,7 @@ Checked: 2026-10-22. Environment: Python 3.9.6, Git 2.39.5. Runtime dependencies
 ## Executed
 
 - Public example and local private profile passed Draft 2020-12 schema and semantic validation. Private values were not printed in the report.
-- All **13 unit tests passed**: valid/invalid config, mandatory fields, learner-selected topics and life/work contexts, unknown starting level, private-only Notion settings, explicit approval flag, language distinction, leap-year dates, all four review milestones, overdue stages, same-day practice, hinted answers, novel use, failures/retries, cycle reopening and backdating.
+- All **14 unit tests passed**: valid/invalid config, optional week horizon bounds, mandatory fields, learner-selected topics and life/work contexts, unknown starting level, private-only Notion settings, explicit approval flag, language distinction, leap-year dates, all four review milestones, overdue stages, same-day practice, hinted answers, novel use, failures/retries, cycle reopening and backdating.
 - The skill-creator `quick_validate.py` accepted the SKILL.md frontmatter, name and body scaffold checks.
 - Relative Markdown links resolved to existing files. Exactly one SKILL.md exists in the public manifest.
 - Git ignore rules excluded private configuration and learning state. The staged public manifest contained no private paths, local absolute paths or distinctive private-profile values checked during this build.
@@ -16,8 +16,8 @@ Checked: 2026-10-22. Environment: Python 3.9.6, Git 2.39.5. Runtime dependencies
 
 ## Not executed
 
-The 37 scenarios in `tests/scenarios.md` specify expected agent behavior. They have **not** been run as full interactive evaluations. In particular, no live 15/30-minute learner session, voice/audio assessment, ChatGPT Project account test, Notion integration test or hosted GitHub Actions run has been performed. The worked lesson is synthetic and does not establish pacing or learning outcomes.
+The 40 scenarios in `tests/scenarios.md` specify expected agent behavior. They have **not** been run as full interactive evaluations. In particular, no live 15/30-minute learner session, voice/audio assessment, ChatGPT Project account test, Notion integration test or hosted GitHub Actions run has been performed. The worked lesson is synthetic and does not establish pacing or learning outcomes.
 
 This report verifies local packaging and deterministic logic, not guaranteed model compliance or a learner's proficiency. Before relying on daily use, run T05/T06, T09, T16 and T22 in the chosen host. Notion scenarios require separate explicit authorization before any actual write.
 
-The added handoff and beginner scenarios T31–T37 also require live runs in both target hosts. Local validation can establish that the instructions, template and bundled copy agree; it cannot prove that every model will display or persist the full note in an actual conversation.
+The added handoff, beginner and personal-plan scenarios T31–T40 also require live runs in both target hosts. Local validation can establish that the instructions, template and bundled copy agree; it cannot prove that every model will display or persist the full note in an actual conversation.

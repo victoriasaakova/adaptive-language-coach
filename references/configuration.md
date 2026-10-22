@@ -12,6 +12,7 @@ Required fields:
 | native_language / target_language | Language name or code; must differ |
 | level.self_reported / goal | Ask for approximate starting level (allow `unknown`) and desired level; not certified scores |
 | goals | At least one learner-defined communicative objective; clarify what they want to do with the language |
+| learning_horizon_weeks | Optional number of weeks (1–104) chosen by the learner; `null` means unknown. Ask once during onboarding, then offer a provisional range after diagnostic if needed. Existing profiles remain valid without this field |
 | interests | At least one topic selected by the learner; ask during onboarding rather than assume |
 | context.life / context.work | Arrays of practical situations; at least one must be nonempty. Work may be empty if irrelevant or declined. No identifying details needed |
 | session.default_minutes | 15 or 30 |
@@ -27,3 +28,5 @@ Optional private-only `notion`: enabled (boolean), destination (nonempty page/da
 `python scripts/validate.py` validates the public example. `python scripts/validate.py --private private/config.json` additionally validates a private profile locally. Validation includes timezone resolution and distinct source/target identifiers, beyond JSON Schema. Semantic aliases (e.g. “English” and “en”) require agent judgment. Unknown properties are errors to catch typos.
 
 Missing or invalid configuration: explain the field-level issue without printing the complete personal profile; ask for missing information or a correction. Do not guess a target language from the repository name, examples or interface language.
+
+The private `learning-plan.md` translates goals and the horizon into observable weekly milestones and a target window. It should state lesson cadence, assumptions and evidence checks. A desired CEFR level or deadline is an aspiration until supported by comparable learner work; adjusting either requires discussion with the learner. Do not place their plan in the public example.

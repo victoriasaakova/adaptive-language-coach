@@ -40,6 +40,11 @@
         "minLength": 1
       }
     },
+    "learning_horizon_weeks": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "maximum": 104
+    },
     "interests": {
       "type": "array",
       "uniqueItems": true,

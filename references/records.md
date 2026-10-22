@@ -14,7 +14,7 @@ At lesson close, reconcile all records, finalize evidence-based scores and updat
 
 The learner-facing note and next-lesson context are required at every handoff; follow [lesson handoff](lesson-handoff.md). Link or display the full note rather than claiming that a short recap is the complete record.
 
-- `private/learning-plan.md`: agent-built goals-to-situations mapping, topic rotation, diagnostic needs, per-skill provisional baseline, 15/30-minute task structure and next focus; update after lessons without changing user goals silently.
+- `private/learning-plan.md`: agent-built goals-to-situations mapping, learner-chosen week horizon or provisional range, start/target window, weekly milestones with observable checks, lesson cadence, topic rotation, diagnostic needs, per-skill provisional baseline, 15/30-minute task structure and next focus; update evidence and upcoming tasks after lessons without silently changing the user's end goal or deadline.
 - `private/lessons/YYYY-MM-DD-NN.md`: one note per lesson, using `templates/lesson.md`; never overwrite another same-day lesson. Use `lesson_id` as the idempotency key when resuming.
 - `private/errors.md`: append observed errors with lesson ID, original, correction, rule, severity, recurrence count, last seen and status (open/practicing/stable). Repeated patterns update an existing entry; retain dated evidence. “Stable” requires successful later use.
 - `private/vocabulary.json`: array of vocabulary objects described below.

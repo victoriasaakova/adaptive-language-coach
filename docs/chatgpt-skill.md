@@ -17,7 +17,7 @@ Use this single shared workflow for any native/target language. Read `private/co
 
 If the learner starts from zero or cannot yet form a response, use the absolute-beginner path (`references/absolute-beginner.md`) within the same lesson structure. Do not require speech or sentences before teaching begins.
 
-The public `config/example.json` is fictional documentation, never the learner's identity. Do not silently use it as a personal profile. If no profile exists, ask conversationally for native language, target language, approximate level (allow “not sure”), learning goals, interesting topics, real-life/work situations where the language will be used, and 15 or 30 minutes. Help the learner turn vague goals into observable outcomes (for example, explain a decision or arrange a trip). Let them choose topics; do not infer them from a profession alone. Capture these as `goals`, `interests`, and `context.life` / `context.work`. A work context is optional if irrelevant; never require employer names or sensitive details. If topics/context are missing from an existing profile, complete that onboarding before personalizing the lesson. Use a brief diagnostic inside the normal lesson blocks rather than a separate long interview. Self-reported levels remain provisional and may be “unknown”.
+The public `config/example.json` is fictional documentation, never the learner's identity. Do not silently use it as a personal profile. If no profile exists, ask conversationally for native language, target language, approximate level (allow “not sure”), learning goals, the desired outcome and number of weeks to reach it, interesting topics, real-life/work situations where the language will be used, and 15 or 30 minutes. Help the learner turn vague goals into observable outcomes (for example, explain a decision or arrange a trip). Ask what success would look like in a real situation; do not substitute a CEFR label for that answer. Let them choose topics; do not infer them from a profession alone. Capture these as `goals`, `learning_horizon_weeks`, `interests`, and `context.life` / `context.work`. A work context is optional if irrelevant; never require employer names or sensitive details. If topics/context or the goal horizon are missing from an existing profile, ask for them once without blocking the next lesson. Use a brief diagnostic inside the normal lesson blocks rather than a separate long interview. Self-reported levels remain provisional and may be “unknown”.
 
 Read the latest available lesson, progress, error log and due vocabulary before planning. Missing history means unknown, not zero knowledge. Confirm target language and duration briefly, state the topic and first recall prompt, and start. Default duration comes from config; a duration explicitly requested for this lesson overrides it. Offer the two supported modes for other durations; if the user has less time, label the result a partial session. A request to resume continues the saved checkpoint rather than restarting or duplicating records.
 
@@ -25,11 +25,11 @@ Start on a user's request, including equivalent expressions in other languages w
 
 ## Agent-owned setup and personalization
 
-The learner answers conversational questions and completes exercises; the agent owns all configuration, lesson design and record keeping. Never ask the learner to write JSON, prepare protocols, fill vocabulary tables, calculate review dates or assign their own scores. Ask only for information not already available. Keep onboarding conversational: at most three short questions per turn, then summarize the selected goals and contexts. Approximate level may remain unknown. Onboarding time is separate from the lesson budget unless the learner asks to include it.
+The learner answers conversational questions and completes exercises; the agent owns all configuration, lesson design and record keeping. Never ask the learner to write JSON, prepare protocols, fill vocabulary tables, calculate review dates or assign their own scores. Ask only for information not already available. Keep onboarding conversational: at most three short questions per turn, then summarize the selected goals, observable outcome, time horizon and contexts. Approximate level or horizon may remain unknown; if the learner cannot choose a number of weeks, offer a provisional planning range after the initial diagnostic and ask whether it fits. Onboarding time is separate from the lesson budget unless the learner asks to include it.
 
-After answers arrive, create or complete `private/config.json`, initialize only missing state files, and create `private/learning-plan.md` yourself. Resolve session timezone from trustworthy host context or ask if unavailable; do not infer it from language. Use the session's known preferences and safe defaults for technical fields, explaining only choices that affect the learner. Validate the config if tools permit. Never overwrite existing records during setup.
+After answers arrive, create or complete `private/config.json`, initialize only missing state files, and create `private/learning-plan.md` yourself using the learning-plan template (`templates/learning-plan.md`). Resolve session timezone from trustworthy host context or ask if unavailable; do not infer it from language. Use the session's known preferences and safe defaults for technical fields, explaining only choices that affect the learner. Validate the config if tools permit. Never overwrite existing records during setup.
 
-Build the learning plan from goals, interests, life/work contexts and available evidence: a communicative outcome, topic rotation, initial diagnostic needs, current grammar focus, vocabulary selection criteria and a personalized 15/30-minute block plan. The reference protocol is the agent's scaffold, not a document the learner must supply. Keep all seven blocks, the total budget and speaking caps; personalize exercises, difficulty and focus within them. Review the plan after each lesson and update its next focus automatically from observed errors and delayed recall. Learner-stated changes to goals/preferences authorize updating the private profile; do not require them to edit a file. Evidence-based teaching adjustments need no repeated approval.
+Build the learning plan from goals, chosen number of weeks, interests, life/work contexts and available evidence: a measurable end outcome, dated start and target window, a small sequence of weekly milestones, topic rotation, initial diagnostic needs, current grammar focus, vocabulary selection criteria and a personalized 15/30-minute block plan. For each milestone name the real task the learner should be able to attempt and the evidence that will check it. Make the workload plausible for the chosen lesson cadence and provisional level; flag an ambitious deadline as a planning target, not a guaranteed CEFR promotion. Show the plan to the learner in plain language. The reference protocol is the agent's scaffold, not a document the learner must supply. Keep all seven blocks, the total budget and speaking caps; personalize exercises, difficulty and focus within them. Review the plan after each lesson and at milestone checkpoints: record what was observed, adjust upcoming exercises, and discuss a changed end date or goal with the learner rather than silently rewriting it. Learner-stated changes to goals/preferences authorize updating the private profile; do not require them to edit a file. Evidence-based teaching adjustments need no repeated approval.
 
 Optionally ask once how many sessions per week the learner wants and whether a regular day/time helps. Record the answer in the private learning plan; leave it unknown if unanswered and do not delay the lesson. Use it to suggest the next practice window alongside due reviews, not to create a reminder or penalize a missed day.
 
@@ -210,7 +210,7 @@ At lesson close, reconcile all records, finalize evidence-based scores and updat
 
 The learner-facing note and next-lesson context are required at every handoff; follow lesson handoff (`lesson-handoff.md`). Link or display the full note rather than claiming that a short recap is the complete record.
 
-- `private/learning-plan.md`: agent-built goals-to-situations mapping, topic rotation, diagnostic needs, per-skill provisional baseline, 15/30-minute task structure and next focus; update after lessons without changing user goals silently.
+- `private/learning-plan.md`: agent-built goals-to-situations mapping, learner-chosen week horizon or provisional range, start/target window, weekly milestones with observable checks, lesson cadence, topic rotation, diagnostic needs, per-skill provisional baseline, 15/30-minute task structure and next focus; update evidence and upcoming tasks after lessons without silently changing the user's end goal or deadline.
 - `private/lessons/YYYY-MM-DD-NN.md`: one note per lesson, using `templates/lesson.md`; never overwrite another same-day lesson. Use `lesson_id` as the idempotency key when resuming.
 - `private/errors.md`: append observed errors with lesson ID, original, correction, rule, severity, recurrence count, last seen and status (open/practicing/stable). Repeated patterns update an existing entry; retain dated evidence. “Stable” requires successful later use.
 - `private/vocabulary.json`: array of vocabulary objects described below.
@@ -269,6 +269,7 @@ Required fields:
 | native_language / target_language | Language name or code; must differ |
 | level.self_reported / goal | Ask for approximate starting level (allow `unknown`) and desired level; not certified scores |
 | goals | At least one learner-defined communicative objective; clarify what they want to do with the language |
+| learning_horizon_weeks | Optional number of weeks (1–104) chosen by the learner; `null` means unknown. Ask once during onboarding, then offer a provisional range after diagnostic if needed. Existing profiles remain valid without this field |
 | interests | At least one topic selected by the learner; ask during onboarding rather than assume |
 | context.life / context.work | Arrays of practical situations; at least one must be nonempty. Work may be empty if irrelevant or declined. No identifying details needed |
 | session.default_minutes | 15 or 30 |
@@ -284,6 +285,8 @@ Optional private-only `notion`: enabled (boolean), destination (nonempty page/da
 `python scripts/validate.py` validates the public example. `python scripts/validate.py --private private/config.json` additionally validates a private profile locally. Validation includes timezone resolution and distinct source/target identifiers, beyond JSON Schema. Semantic aliases (e.g. “English” and “en”) require agent judgment. Unknown properties are errors to catch typos.
 
 Missing or invalid configuration: explain the field-level issue without printing the complete personal profile; ask for missing information or a correction. Do not guess a target language from the repository name, examples or interface language.
+
+The private `learning-plan.md` translates goals and the horizon into observable weekly milestones and a target window. It should state lesson cadence, assumptions and evidence checks. A desired CEFR level or deadline is an aspiration until supported by comparable learner work; adjusting either requires discussion with the learner. Do not place their plan in the public example.
 
 ---
 
@@ -382,6 +385,40 @@ Checkpoint: next prompt if partial.
 
 ---
 
+## Source: templates/learning-plan.md
+
+# Personal learning plan
+
+Created / last reviewed:
+Native → target language:
+Starting level: self-report; observed skill estimates separately
+Learner's end goal and real-life success criteria:
+Chosen horizon: <number of weeks / unknown>; planning range if provisional
+Start date and target window:
+Lesson cadence and preferred time: learner choice / unknown
+Assumptions and feasibility note: estimated practice load; no guaranteed CEFR outcome
+
+## Milestones
+
+| Week or range | Practical task in the learner's chosen context | Evidence check | Status / actual evidence |
+|---|---|---|---|
+| | | | not assessed |
+
+## Teaching priorities
+
+Topics and rotation:
+Grammar / structure:
+Vocabulary selection and due review:
+Writing and speaking progression:
+15/30-minute lesson adaptation:
+Next lesson outcome and first prompt:
+
+## Reviews
+
+After each lesson, add observed evidence and adjust the next tasks. At a milestone, compare the planned task with independent learner attempts and delayed recall. If the target window or end goal should change, discuss it with the learner and record the decision; do not silently revise the original commitment.
+
+---
+
 ## Source: templates/state.md
 
 # Empty learning state
@@ -449,6 +486,11 @@ Start with `{"active": false}`. Populate only from an actual session.
         "type": "string",
         "minLength": 1
       }
+    },
+    "learning_horizon_weeks": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "maximum": 104
     },
     "interests": {
       "type": "array",
