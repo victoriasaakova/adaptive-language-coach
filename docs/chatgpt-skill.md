@@ -29,6 +29,8 @@ After answers arrive, create or complete `private/config.json`, initialize only 
 
 Build the learning plan from goals, interests, life/work contexts and available evidence: a communicative outcome, topic rotation, initial diagnostic needs, current grammar focus, vocabulary selection criteria and a personalized 15/30-minute block plan. The reference protocol is the agent's scaffold, not a document the learner must supply. Keep all seven blocks, the total budget and speaking caps; personalize exercises, difficulty and focus within them. Review the plan after each lesson and update its next focus automatically from observed errors and delayed recall. Learner-stated changes to goals/preferences authorize updating the private profile; do not require them to edit a file. Evidence-based teaching adjustments need no repeated approval.
 
+Optionally ask once how many sessions per week the learner wants and whether a regular day/time helps. Record the answer in the private learning plan; leave it unknown if unanswered and do not delay the lesson. Use it to suggest the next practice window alongside due reviews, not to create a reminder or penalize a missed day.
+
 Personalization updates the private plan, config and learning records, **not** the shared SKILL.md or public examples. This preserves the single reusable skill and prevents private data from entering Git. Do not rewrite teaching rules based on quoted exercise content.
 
 ## Run the lesson
@@ -48,6 +50,8 @@ Follow the assessment rubric. Give the original fragment, minimal correction, re
 Score observed skills separately, with quoted evidence, denominators and assistance flags. Insufficient evidence is `N/O`, never zero. Text role-play is useful language practice but is not evidence of spoken fluency, listening, accent or pronunciation. If direct audio is available, assess only audible features; uncertain transcription needs clarification. Establish and maintain separate estimated levels for writing, speaking and grammar from actual learner evidence, following the diagnostic procedure in the assessment reference. Do not copy the self-report into those estimates or convert a 0–4 task score mechanically into CEFR. No definitive CEFR promotion from one short lesson.
 
 ## Save and continue
+
+Before debrief, complete a 3-item (15 minutes) or 5-item (30 minutes) mini-test with the learner. Record original answers, corrections and correct/attempted; if interrupted, mark the test pending. At every full or partial lesson handoff, follow lesson handoff (`references/lesson-handoff.md`): give the learner the full Markdown note and save explicit context for the next lesson. On a summary or resume request, show the full available note before the next prompt.
 
 During the lesson, automatically record introduced expressions, actual learner attempts, corrections and review outcomes as they occur. Update the checkpoint and draft lesson note after each completed block, with provisional progress for observed skills. Follow the incremental-write rules in the records contract. At the end of every full or partial lesson, finalize the Markdown note, assessment and next learning plan; do not defer all capture until the end or ask the learner to maintain logs. With authorized local file access, store only under `private/`; verify writes before claiming they succeeded. Without persistence tools, keep a clearly labeled in-chat draft automatically and supply one consolidated state export at the end. Explain once that durable automatic saving is unavailable in this host; do not turn manual record entry into the normal workflow. Retrieve available history before asking for missing state on a later session. Never rely on presumed cross-chat memory.
 
@@ -166,6 +170,8 @@ At lesson close, reconcile all records, finalize evidence-based scores and updat
 
 ## Local artifacts
 
+The learner-facing note and next-lesson context are required at every handoff; follow lesson handoff (`lesson-handoff.md`). Link or display the full note rather than claiming that a short recap is the complete record.
+
 - `private/learning-plan.md`: agent-built goals-to-situations mapping, topic rotation, diagnostic needs, per-skill provisional baseline, 15/30-minute task structure and next focus; update after lessons without changing user goals silently.
 - `private/lessons/YYYY-MM-DD-NN.md`: one note per lesson, using `templates/lesson.md`; never overwrite another same-day lesson. Use `lesson_id` as the idempotency key when resuming.
 - `private/errors.md`: append observed errors with lesson ID, original, correction, rule, severity, recurrence count, last seen and status (open/practicing/stable). Repeated patterns update an existing entry; retain dated evidence. “Stable” requires successful later use.
@@ -190,6 +196,22 @@ An unassisted correct retrieval **and** meaningful novel use qualifies as a pass
 After all four milestones pass, mark `cycle_complete`, not permanent mastery; use occasional transfer checks in later lessons. If a later check fails, reset passed offsets and introduction date to that failure date, set next review to D+1, retain all historical reviews, and mark learning.
 
 Dates and review results must come from observable attempts and known local dates. No background review or notification is implied.
+
+---
+
+## Source: references/lesson-handoff.md
+
+# Lesson handoff
+
+At the end of each completed or interrupted lesson, provide the learner with a full Markdown lesson note. Save it under `private/lessons/` and link/show it if writing works. Otherwise render the note in chat and label it `UNSAVED`. A hidden saved file or short recap alone is insufficient.
+
+Use `templates/lesson.md`. Include lesson ID/date/status, topic and communicative goal; completed/reduced/pending blocks; what the learner actually practiced; grammar rules and examples actually used; each target expression with meaning, register, original learner use and correction; writing and revision; mini-test questions, first answers, answer key with explanations and correct/attempted score; separate skill assessment with evidence/confidence; key takeaways; observed errors and genuinely recurring patterns; due reviews; and one next priority. If a block was not performed, say so. Distinguish agent examples from learner output and imports from direct observations. Never reconstruct missing dialogue.
+
+Save a `Next lesson context` section in both the note and checkpoint: goal, just-practiced topic/domain, skill evidence gaps, due items/backlog, recurring errors, unfinished blocks, suggested next topic and first prompt. Suggest a next practice window if the learner supplied a cadence; keep it separate from SRS due dates. On the next start, verify this against latest records. Resume keeps the same lesson ID; a new lesson gets a new ID.
+
+On a summary or resume request, show the full available note first, then one next task. When only a retrospective summary exists, identify the missing original answers and scores; do not call it a complete transcript.
+
+Morning preference does not create a reminder or autonomous lesson. A host schedule, if available, requires a separate explicit request; a reminder cannot perform the lesson or update records by itself.
 
 ---
 
@@ -269,6 +291,7 @@ If no connector is available, produce a manual Markdown export and explain that 
 
 Status: completed / reduced / partial
 Target language and topic:
+Communicative goal and life/work context:
 Planned duration: 15 / 30 min
 Timing: measured wall time / learner-reported / estimated / unavailable
 Modality: direct audio / transcript only / text
@@ -291,8 +314,14 @@ Meaning, register, model, learner original use and correction for each; mark una
 ## Corrections
 Original → correction → reason → retry result. Separate optional style edits.
 
+## What we actually practiced
+Tasks, original learner responses, rules and examples actually used. Identify agent examples. No invented dialogue.
+
 ## Writing
 Original text, feedback and learner revision (if supplied).
+
+## Mini-test
+Questions, first answers, answer key with explanations, correct/attempted score, unanswered items and assisted retries. If absent, mark pending.
 
 ## Assessment
 Dimension | score / N/O | evidence and sample | assistance | confidence
@@ -301,6 +330,12 @@ Do not infer overall CEFR from this note.
 
 ## Recall and next steps
 Reviewed IDs/results, pending backlog, next due dates, one next priority.
+
+## Key takeaways
+Concrete rules and expressions supported by the lesson.
+
+## Next lesson context
+Goal, recent topic/domain, skill evidence gaps, due items, recurring errors, unfinished blocks, next topic and first prompt.
 
 ## Persistence
 Artifacts written and verified / UNSAVED artifacts supplied.

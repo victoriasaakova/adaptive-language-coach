@@ -6,7 +6,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [
     'SKILL.md', 'references/lesson-protocol.md', 'references/assessment.md',
-    'references/records.md', 'references/configuration.md',
+    'references/records.md', 'references/lesson-handoff.md', 'references/configuration.md',
     'references/limitations.md', 'references/notion-sync.md',
     'templates/lesson.md', 'templates/state.md', 'config/schema.json',
 ]

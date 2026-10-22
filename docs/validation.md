@@ -16,6 +16,8 @@ Checked: 2026-10-22. Environment: Python 3.9.6, Git 2.39.5. Runtime dependencies
 
 ## Not executed
 
-The 30 scenarios in `tests/scenarios.md` specify expected agent behavior. They have **not** been run as full interactive evaluations. In particular, no live 15/30-minute learner session, voice/audio assessment, ChatGPT Project account test, Notion integration test or hosted GitHub Actions run has been performed. The worked lesson is synthetic and does not establish pacing or learning outcomes.
+The 34 scenarios in `tests/scenarios.md` specify expected agent behavior. They have **not** been run as full interactive evaluations. In particular, no live 15/30-minute learner session, voice/audio assessment, ChatGPT Project account test, Notion integration test or hosted GitHub Actions run has been performed. The worked lesson is synthetic and does not establish pacing or learning outcomes.
 
 This report verifies local packaging and deterministic logic, not guaranteed model compliance or a learner's proficiency. Before relying on daily use, run T05/T06, T09, T16 and T22 in the chosen host. Notion scenarios require separate explicit authorization before any actual write.
+
+The added handoff scenarios T31–T34 also require live runs in both target hosts. Local validation can establish that the instructions, template and bundled copy agree; it cannot prove that every model will display or persist the full note in an actual conversation.
