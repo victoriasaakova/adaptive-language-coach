@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "native_language": "de",
+  "target_language": "es",
+  "level": {
+    "self_reported": "A2",
+    "goal": "B1"
+  },
+  "goals": [
+    "Handle everyday travel conversations"
+  ],
+  "interests": [
+    "cooking",
+    "hiking",
+    "local history"
+  ],
+  "session": {
+    "default_minutes": 15,
+    "preferred_time": "flexible",
+    "timezone": "Etc/UTC",
+    "mode": "text"
+  },
+  "feedback": {
+    "style": "precise",
+    "automatic_praise": false,
+    "explanation_language": "de"
+  },
+  "context": {
+    "life": [
+      "Plan meals and outdoor activities with friends"
+    ],
+    "work": [
+      "Arrange schedules and clarify practical requests with colleagues"
+    ]
+  }
+}

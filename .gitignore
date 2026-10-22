@@ -1,0 +1,11 @@
+# Personal configuration, lessons, learning records and sync state
+/private/
+*.private.*
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
