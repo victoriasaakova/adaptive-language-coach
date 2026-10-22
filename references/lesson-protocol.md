@@ -16,7 +16,7 @@ Budgets include task instructions, learner response and corrections. They are ta
 
 ## Flow control
 
-15-minute speaking: maximum 2 main learner responses, approximately 30–45 seconds each, plus one brief correction/retry cycle. 30-minute speaking: maximum 3 main responses, approximately 60–90 seconds each, plus focused retries within 7 minutes. Follow the first limit reached. In text mode ask for 2–3 / 4–6 sentences per main response. Turn counts remain usable without a clock.
+15-minute speaking: maximum 2 main learner responses, approximately 30–45 seconds each, plus one brief correction/retry cycle. 30-minute speaking: maximum 3 main responses, approximately 60–90 seconds each, plus focused retries within 7 minutes. Follow the first limit reached. In text mode ask for 2–3 / 4–6 sentences per main response when the learner can form sentences; A0 responses may be one word or a short chunk. Turn counts remain usable without a clock.
 
 Announce the cap before speaking. At the cap say, for example: “We'll keep that question for next time. Now write one new sentence for each expression.” Do not solicit an extra open-ended answer. Corrections and retries count inside the cap.
 
@@ -25,6 +25,8 @@ At each transition check remaining time if measurable, otherwise track the plann
 ## Content and adaptation
 
 At start, use due reviews and one recurring error to pick the grammar focus. On a first lesson, use recall as a diagnostic with level-appropriate open prompts. Explain grammar briefly in the configured explanation language and practice in the target language. Adapt forms, script, register and transliteration to the language; do not transplant English grammar categories blindly.
+
+For an A0/pre-A1 learner or someone unable to answer open prompts, replace the open diagnostic with recognition and a tiny supported attempt; follow [absolute-beginner path](absolute-beginner.md). The table's sentence and connected-writing minima are targets for learners who can produce them. At A0, retain every block but label a block `reduced` when the learner can only choose, repeat or adapt a chunk. Never score unsupported independent production or drop the mini-test.
 
 Use interests as contexts for the goal, not as prerequisites for knowledge. Give any needed background in a sentence. Alternate familiar and transfer contexts. Increase difficulty only after repeated independent success; after repeated failures, simplify one variable (sentence length, structure or vocabulary) and retest. Never introduce more than five target expressions to compensate for a weak lesson.
 

@@ -15,6 +15,8 @@ References to repository paths below resolve to the named sections in this file.
 
 Use this single shared workflow for any native/target language. Read `private/config.json` (or the explicitly supplied learner configuration), then lesson protocol (`references/lesson-protocol.md`), assessment (`references/assessment.md`), and records (`references/records.md`). Use configuration contract (`references/configuration.md`) if fields are missing or ambiguous. In file-only chats, resolve these by their uploaded filenames; never pretend an unavailable file was read.
 
+If the learner starts from zero or cannot yet form a response, use the absolute-beginner path (`references/absolute-beginner.md`) within the same lesson structure. Do not require speech or sentences before teaching begins.
+
 The public `config/example.json` is fictional documentation, never the learner's identity. Do not silently use it as a personal profile. If no profile exists, ask conversationally for native language, target language, approximate level (allow “not sure”), learning goals, interesting topics, real-life/work situations where the language will be used, and 15 or 30 minutes. Help the learner turn vague goals into observable outcomes (for example, explain a decision or arrange a trip). Let them choose topics; do not infer them from a profession alone. Capture these as `goals`, `interests`, and `context.life` / `context.work`. A work context is optional if irrelevant; never require employer names or sensitive details. If topics/context are missing from an existing profile, complete that onboarding before personalizing the lesson. Use a brief diagnostic inside the normal lesson blocks rather than a separate long interview. Self-reported levels remain provisional and may be “unknown”.
 
 Read the latest available lesson, progress, error log and due vocabulary before planning. Missing history means unknown, not zero knowledge. Confirm target language and duration briefly, state the topic and first recall prompt, and start. Default duration comes from config; a duration explicitly requested for this lesson overrides it. Offer the two supported modes for other durations; if the user has less time, label the result a partial session. A request to resume continues the saved checkpoint rather than restarting or duplicating records.
@@ -85,7 +87,7 @@ Budgets include task instructions, learner response and corrections. They are ta
 
 ## Flow control
 
-15-minute speaking: maximum 2 main learner responses, approximately 30–45 seconds each, plus one brief correction/retry cycle. 30-minute speaking: maximum 3 main responses, approximately 60–90 seconds each, plus focused retries within 7 minutes. Follow the first limit reached. In text mode ask for 2–3 / 4–6 sentences per main response. Turn counts remain usable without a clock.
+15-minute speaking: maximum 2 main learner responses, approximately 30–45 seconds each, plus one brief correction/retry cycle. 30-minute speaking: maximum 3 main responses, approximately 60–90 seconds each, plus focused retries within 7 minutes. Follow the first limit reached. In text mode ask for 2–3 / 4–6 sentences per main response when the learner can form sentences; A0 responses may be one word or a short chunk. Turn counts remain usable without a clock.
 
 Announce the cap before speaking. At the cap say, for example: “We'll keep that question for next time. Now write one new sentence for each expression.” Do not solicit an extra open-ended answer. Corrections and retries count inside the cap.
 
@@ -95,11 +97,45 @@ At each transition check remaining time if measurable, otherwise track the plann
 
 At start, use due reviews and one recurring error to pick the grammar focus. On a first lesson, use recall as a diagnostic with level-appropriate open prompts. Explain grammar briefly in the configured explanation language and practice in the target language. Adapt forms, script, register and transliteration to the language; do not transplant English grammar categories blindly.
 
+For an A0/pre-A1 learner or someone unable to answer open prompts, replace the open diagnostic with recognition and a tiny supported attempt; follow absolute-beginner path (`absolute-beginner.md`). The table's sentence and connected-writing minima are targets for learners who can produce them. At A0, retain every block but label a block `reduced` when the learner can only choose, repeat or adapt a chunk. Never score unsupported independent production or drop the mini-test.
+
 Use interests as contexts for the goal, not as prerequisites for knowledge. Give any needed background in a sentence. Alternate familiar and transfer contexts. Increase difficulty only after repeated independent success; after repeated failures, simplify one variable (sentence length, structure or vocabulary) and retest. Never introduce more than five target expressions to compensate for a weak lesson.
 
 Speaking must be followed by separate independent-sentence production and connected writing, even if similar vocabulary is used. For every expression, request an original sentence; distinguish requested coverage from actual successful use. Writing should be a small real-world output such as a message, explanation or recommendation. Give feedback, then request a targeted revision if time permits.
 
 Mini-test: include grammar, retrieval and transfer to a new context. Use 3 items in short mode and 5 in long mode, including an additional delayed-recall item when history exists. Show no answer key before attempts. A hint or retry can improve learning but cannot replace the first-attempt score. Close with specific evidence and a single next priority.
+
+---
+
+## Source: references/absolute-beginner.md
+
+# Absolute-beginner path (A0 / pre-A1)
+
+Use this path when the learner says they are starting from zero, cannot yet form a response, or repeatedly cannot attempt the standard prompt. Do not require a CEFR label or a diagnostic monologue. Ask in the explanation language whether they recognize any words or script; if not, begin with a tiny real-life situation chosen from their goals. Use the target language for models and learner attempts, with brief explanations in the configured explanation language. Adapt script, direction, pronunciation and transliteration to the actual language. Do not make English words or grammar the default.
+
+## Progression
+
+Teach 3 high-frequency, usable words or short chunks in 15 minutes; use 3–5 in 30 minutes only when the learner can manage them. Demonstrate meaning and one contextual model. Move through these steps as evidence permits:
+
+1. Recognize: choose, match or point to a meaning without seeing the answer first.
+2. Reproduce: repeat or copy a model, explicitly labeled assisted reproduction.
+3. Adapt: change one meaningful element in the model (person, object, place or need).
+4. Produce: independently choose a relevant word/chunk or create a short phrase for a new situation.
+5. Expand later: original sentence, connected writing, then a brief exchange.
+
+Do not wait for independent sentences before allowing a first lesson. One-word or short-phrase answers are valid early attempts. If the learner cannot attempt a stage, return to one simpler step; do not turn the task into an answer supplied by the agent. Keep a small success criterion in the private learning plan: for example, recognize 2 of 3 chunks and independently adapt one. Advance when comparable unassisted attempts succeed across sessions; record receptive and productive gains separately. Do not claim a global CEFR level from recognition alone.
+
+## Seven blocks at this stage
+
+- Recall/diagnostic: recognize or retrieve 2–3 items; on day one, distinguish any known item from a newly taught one. No knowledge is `unknown`, not a scored failure.
+- Grammar: one usable pattern or word order, with two micro-attempts such as choosing the right form and replacing one element. For a new script, a script/sound pattern may be the first structural focus; mark grammar `N/O` if not observed.
+- Vocabulary: model each chunk with meaning, context and pronunciation only when audible. Check meaning without revealing the answer.
+- Speaking: if direct audio is available, invite an optional short echo, substitution and one meaningful response; cap turns as usual. If the learner cannot speak yet, use supported oral practice and mark independent spoken performance `N/O` or insufficient evidence. In text-only mode, use a labeled text role-play; never score pronunciation or spoken fluency.
+- Independent-use block: ask for a new choice or adaptation using each target item. Record whether it was recognition, copied, prompted or independently produced. Mark the block `reduced` if a full original sentence was not possible; keep it visible rather than silently dropping it.
+- Writing: start with a word, label, short message or filled pattern; ask for one correction and retry. Mark connected-writing assessment `N/O` until an original connected sample exists.
+- Mini-test: 3/5 brief items spanning meaning, one pattern and use in a new context. Accept a word or short phrase where appropriate. Record first answers and separate receptive from productive items; never award productive mastery for multiple choice or copying.
+
+Finish with the same full Markdown note and next-lesson context. Show what the learner can now recognize, reproduce and independently use; identify the next smallest step. Maintain D+1/3/7/14 review dates for introduced items, but a milestone passes only under the usual unassisted retrieval **and** novel meaningful-use rule. Recognition-only success is useful progress, not an SRS pass. Missing audio, missing writing and skipped stages remain visible as `N/O` or `reduced`, not a low ability score.
 
 ---
 
@@ -141,6 +177,8 @@ State the task, sample size, quoted evidence and confidence (low/medium/high). A
 ## Initial diagnostic and estimated levels
 
 First ask the learner for an approximate level; “not sure” is a valid answer. Treat it only as a starting difficulty hint. During the first lesson, collect a short original writing sample in their chosen context, two grammar attempts with a transfer item, and a short spoken response plus follow-up when direct audio is available. Use the existing writing, grammar, speaking and mini-test blocks; do not add an unbudgeted exam. If the task is clearly too hard/easy, change one difficulty variable and observe another attempt within the budget.
+
+At A0/pre-A1, use the absolute-beginner path (`absolute-beginner.md`): record recognition, assisted repetition, adaptation and independent production as distinct evidence. Do not demand connected writing or a spoken exchange to diagnose a complete beginner. When the sample cannot support a dimension, record `N/O` and the next smallest diagnostic task. A correct recognition choice is not evidence of independent speaking, writing or grammatical control.
 
 Maintain three separate baseline entries in `private/progress.md`: **writing**, **speaking**, and **grammar**. Each contains an estimated CEFR band/range or `insufficient evidence`, source lesson IDs, original evidence, assistance, confidence, date and the next diagnostic need. Grammar is a pedagogical estimate of grammatical control, not a standalone certified CEFR qualification. A task score of 0–4 describes performance on that task and has no automatic CEFR conversion.
 
